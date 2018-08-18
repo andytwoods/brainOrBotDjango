@@ -80,6 +80,8 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 ]
 LOCAL_APPS = [
     'users.apps.UsersConfig',

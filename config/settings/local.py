@@ -67,10 +67,19 @@ INSTALLED_APPS += ['django_extensions']  # noqa F405
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'zappademo',
-        'USER': 'zappademo',
-        'PASSWORD': 'zappademo',
+        'NAME': 'brainOrBot',
+        'USER': 'postgres',
+        'PASSWORD': 'drizzt1',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': '5433',
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
