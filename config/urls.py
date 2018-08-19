@@ -4,31 +4,25 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
-from rest_auth.views import LoginView, LogoutView
-
-from config.views import TestAuthView
 
 urlpatterns = [
-    url(r"^$", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    url(
-        r"^about/$",
-        TemplateView.as_view(template_name="pages/about.html"),
-        name="about",
-    ),
-    # Django Admin, use {% url 'admin:index' %}
-    url(settings.ADMIN_URL, admin.site.urls),
-    # User management
-    url(
-        r"^users/",
-        include("users.urls", namespace="users"),
-    ),
-    url(r"^accounts/", include("allauth.urls")),
-    # Your stuff: custom urls includes go here
-    url('test_auth/', TestAuthView.as_view(), name='test_auth', ),
-    url('rest-auth/logout/', LogoutView.as_view(), name='rest_logout', ),
-    url('rest-auth/login/', LoginView.as_view(), name='rest_login', ),
-    url('', TemplateView.as_view(template_name='home.html'), name='home', ),
-] + static(
+                  url(r"^$", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+                  url(
+                      r"^about/$",
+                      TemplateView.as_view(template_name="pages/about.html"),
+                      name="about",
+                  ),
+                  # Django Admin, use {% url 'admin:index' %}
+                  url(settings.ADMIN_URL, admin.site.urls),
+                  # User management
+                  url(
+                      r"^users/",
+                      include("users.urls", namespace="users"),
+                  ),
+                  url(r"^accounts/", include("allauth.urls")),
+                  # Your stuff: custom urls includes go here
+
+              ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
 
